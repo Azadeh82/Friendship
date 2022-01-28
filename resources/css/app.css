@@ -1,3 +1,23 @@
-#messagespost { 
-  background-color: red;
+body { 
+  background-image: url('/images/bgbody2.png');
+  background-repeat: repeat;
+
+}
+
+.messageframe {
+  background-image: url('/images/messagegeneral.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bgmessage {
+  background-image: url('/images/bgmessage.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bgcomment {
+  background-image: url('/images/bgcomment.png');
+  background-size: cover;
+  background-position: center;
 }

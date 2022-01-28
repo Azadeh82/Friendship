@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Gate;
 
 
 class CommentController extends Controller
@@ -36,6 +37,8 @@ class CommentController extends Controller
 
         $comment = new Comment();
 
+        $this->authorize('create', $comment);
+
         $comment->content = $request->content;
         $comment->tags = $request->tags;
         $comment->image = $request->image;
@@ -58,6 +61,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
+        $this->authorize('update', $comment);
         return view('comment.edit', compact('comment'));
     }
 
@@ -91,6 +95,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        $this->authorize('delete', $comment);
         $comment->delete();
         return redirect()->route('home')->with('message', 'Comment a bien été supprimé');
 

@@ -6,7 +6,7 @@ FRENDSHIP - Account
 
 @section('content')
 
-<div class="container index text-center">
+<div class="container text-center">
     <div class="row my-md-3 ">
       <div class="col d-flex justify-content-center ">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-emoji-wink text-danger text-opacity-75 mx-md-2" viewBox="0 0 16 16">
@@ -23,8 +23,8 @@ FRENDSHIP - Account
         
       </div>
     </div>
-    <div class="row d-flex justify-content-center ">
-      <div class="col-md-8">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 account">
         <div class="card d-flex flex-row">
 
             <div class="col-md-4 d-flex align-items-center justify-content-center">

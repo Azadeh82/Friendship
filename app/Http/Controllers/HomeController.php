@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\Paginator;
 
+
 class HomeController extends Controller
 {
     /**
@@ -27,7 +28,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $messages = Message::with('user', 'comments.user')->latest()->paginate(3);
+        $messages = Message::with('user', 'comments.user')->latest()->paginate(10);
         
         return view('home', compact('messages'));
     }

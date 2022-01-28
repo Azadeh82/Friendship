@@ -34,3 +34,9 @@ Route::resource('/comments', \App\Http\Controllers\CommentController::class)->ex
 
 Route::get('/comments/create/{id}', [\App\Http\Controllers\CommentController::class , 'create']) ->name('comments.create');
 
+Route::get('/search', [\App\Http\Controllers\MessageController::class, 'search'])->name('search'); 
+
+Route::post('image-upload', [ \App\Http\Controllers\ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
+
+
+

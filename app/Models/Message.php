@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
 
+
 class Message extends Model
 {
     use HasFactory;
@@ -15,7 +16,7 @@ class Message extends Model
     }
 
     public function user() {
-        return $this->belongsTo('app\Models\User');
+        return $this->belongsTo(User::class);
     }
     
 }

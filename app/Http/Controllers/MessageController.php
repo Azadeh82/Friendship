@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 
 class MessageController extends Controller
@@ -26,6 +27,8 @@ class MessageController extends Controller
 
         $message = new Message();
 
+        $this->authorize('create', $message);
+
         $message->message = $request->message;
         $message->image = $request->image;
         $message->tags = $request->tags;
@@ -34,6 +37,8 @@ class MessageController extends Controller
         $message->user_id = $user->id;
         
         $message->save();
+
+        session()->forget('image');
         
         return redirect()->route('home')->with('message', 'votre message a bien été envoyé');
 
@@ -47,6 +52,10 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
+        // if ( Gate::denies('update-message', $message)) {
+        //     abort(403);
+        // }
+        $this->authorize('update', $message);
         return view('message/edit' , compact('message'));
     }
 
@@ -80,7 +89,30 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
+        $this->authorize('delete', $message);
         $message->delete();
         return redirect()->route('home')->with('message', 'Message a bien été supprimé');
+    }
+
+
+    /**
+     * search
+     * 
+     * 
+     */
+    public function search(Request $request) 
+    {
+
+        $request->validate([
+            'search' => '|required|min:2|max:50',
+        ]);
+
+        $search = $request->input('search');
+
+        $results = Message::where('message', 'like' , "%$search%")->orwhere('tags' , 'like' , "%$search%")
+        ->with('user', 'comments.user')->latest()->paginate(3);
+
+
+        return view('message/search' , compact('results'));
     }
 }
