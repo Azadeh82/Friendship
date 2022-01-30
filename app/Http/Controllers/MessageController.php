@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 
 class MessageController extends Controller
 {
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -29,22 +29,27 @@ class MessageController extends Controller
 
         $this->authorize('create', $message);
 
+        if (($request['image'])) {
+ 
+                $message->image = uploadImage($request);
+            
+        }
+
+
         $message->message = $request->message;
-        $message->image = $request->image;
         $message->tags = $request->tags;
 
         $user = Auth::user();
         $message->user_id = $user->id;
-        
+
         $message->save();
 
         session()->forget('image');
-        
-        return redirect()->route('home')->with('message', 'votre message a bien été envoyé');
 
+        return redirect()->route('home')->with('message', 'votre message a bien été envoyé');
     }
 
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -56,7 +61,7 @@ class MessageController extends Controller
         //     abort(403);
         // }
         $this->authorize('update', $message);
-        return view('message/edit' , compact('message'));
+        return view('message/edit', compact('message'));
     }
 
 
@@ -66,14 +71,14 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request , Message $message)
+    public function update(Request $request, Message $message)
     {
         $request->validate([
             'message' => 'required|min:3|max:500',
             'tags' => 'required|min:3|max:40',
         ]);
-             
-        $message->message = $request['message'];       
+
+        $message->message = $request['message'];
         $message->image = $request['image'];
         $message->tags = $request['tags'];
         $message->save();
@@ -100,7 +105,7 @@ class MessageController extends Controller
      * 
      * 
      */
-    public function search(Request $request) 
+    public function search(Request $request)
     {
 
         $request->validate([
@@ -109,10 +114,10 @@ class MessageController extends Controller
 
         $search = $request->input('search');
 
-        $results = Message::where('message', 'like' , "%$search%")->orwhere('tags' , 'like' , "%$search%")
-        ->with('user', 'comments.user')->latest()->paginate(3);
+        $results = Message::where('message', 'like', "%$search%")->orwhere('tags', 'like', "%$search%")
+            ->with('user', 'comments.user')->latest()->paginate(3);
 
 
-        return view('message/search' , compact('results'));
+        return view('message/search', compact('results'));
     }
 }

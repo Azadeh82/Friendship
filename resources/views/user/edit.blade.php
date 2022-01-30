@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-FRENDSHIP - Modify Information
+FRENDSHIP - Modifier Information
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@ FRENDSHIP - Modify Information
                 <div class="card-header fs-5 fw-bolder">{{ __('Modifier mes information') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('update') }}">
+                    <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -62,7 +62,7 @@ FRENDSHIP - Modify Information
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $user->image }}" required autocomplete="prenom" autofocus>
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $user->image }}" required autocomplete="prenom" autofocus>
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

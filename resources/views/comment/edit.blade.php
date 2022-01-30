@@ -35,7 +35,7 @@ FRENDSHIP - Modifier les commentaire
       <div class="card mb-md-5">
         <div class="card-body shadow-lg bg-body rounded">
           <div class="card-body">
-              <form method="POST" action="{{ route('comments.update' , $comment) }}">
+              <form method="POST" action="{{ route('comments.update' , $comment) }}" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
 
@@ -57,7 +57,8 @@ FRENDSHIP - Modifier les commentaire
                     <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
 
                     <div class="col-md-6">
-                        <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $comment->image }}" autocomplete="image" autofocus>
+
+                        <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $comment->image }}" autocomplete="image" autofocus>
 
                         @error('image')
                             <span class="invalid-feedback" role="alert">

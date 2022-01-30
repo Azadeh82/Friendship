@@ -60,6 +60,9 @@
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile', Auth::user()) }}">{{ __('Profile') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('account') }}">{{ __('Acount') }}</a>
                         </li>
 

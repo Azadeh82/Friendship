@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function messages()
     {
-        return $this->hasMany('app\Models\Message');
+        return $this->hasMany(Message::class);
     }
 
     public function comments()

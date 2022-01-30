@@ -35,7 +35,7 @@ FRENDSHIP - Créer un commentaire
       <div class="card mb-md-5">
         <div class="card-body shadow-lg bg-body rounded">
           <div class="card-body">
-              <form method="POST" action="{{ route('comments.store') }}">
+              <form method="POST" action="{{ route('comments.store') }}" enctype="multipart/form-data">
                   @csrf
 
                   <div class="row mb-3 d-flex flex-column">
@@ -70,7 +70,8 @@ FRENDSHIP - Créer un commentaire
                     <div class="col-md-6 d-flex flex-column justify-content-center">
                         <label for="image" class="col-form-label">{{ __('Ajoute une image') }}</label>
                             <div class="col-md-6 mx-auto">
-                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
+
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

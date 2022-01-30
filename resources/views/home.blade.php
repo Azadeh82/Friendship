@@ -34,7 +34,7 @@ FRENDSHIP - Accueil
         <div class="card mb-md-5">
           <div class="card-body rounded messageframe border border-danger border-3">
             <div class="card-body">
-                <form method="POST" action="{{ route('messages.store') }}">
+                <form method="POST" action="{{ route('messages.store') }}" enctype="multipart/form-data" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row mb-3 d-flex flex-column">
@@ -51,6 +51,26 @@ FRENDSHIP - Accueil
                         </div>
                     </div>
 
+                    <div class="row my-md-3">
+                        <div class="col d-flex flex-column justify-content-center">
+                            <label for="image" class="col-form-label fw-bold fs-6 text-center">{{ __('Ajoute une image') }}</label>
+
+                                <div class="col-md-6 d-flex flex-row mx-auto">
+                                    <div class="col-md-10 mx-auto">
+
+                                        <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
+                                        
+  
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>     
+                        </div>
+                    </div>
+
                     <div class="col d-flex flex-column justify-content-center my-md-3">
                         <label for="tags" class="col col-form-label fw-bold fs-6">{{ __('Ajoute des tags') }}</label>
     
@@ -64,28 +84,6 @@ FRENDSHIP - Accueil
                                 @enderror
                             </div> 
                     </div>
-                    <div class="row my-md-3">
-                        <div class="col d-flex flex-column justify-content-center">
-                            <label for="image" class="col-form-label fw-bold fs-6 text-center">{{ __('Ajoute une image') }}</label>
-
-                                <div class="col-md-6 d-flex flex-row mx-auto">
-                                    <div class="col-md-6 mx-auto">
-                                        @if(Session::get('image'))
-                                        <input type="text" class="form-control" name="image" id="image" value="{{ Session::get('image') }}">
-                                        @else
-                                        <input type="text" class="form-control" name="image" id="image" placeholder="upload d'image ci-dessous">
-                                        @endif
-                                            
-                                        @error('image')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    
-                                </div>     
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-md-6 mx-auto">
@@ -96,29 +94,6 @@ FRENDSHIP - Accueil
                     </div>
                 </form>
             </div>
-
-            <div class="col-md-6 mx-auto">
-                <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                
-                        <div class="col-md-10">
-                            <input type="file" name="image" class="form-control">
-                        </div>
-                
-                        <div class="col-md-1">
-                            <button type="submit" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
-                                  </svg>
-                            </button>
-                        </div>
-                
-                    </div>
-                </form>
-            </div>
-            
         </div>
       </div>
     </div>
@@ -140,7 +115,7 @@ FRENDSHIP - Accueil
                         <img  src="images/default_user.jpg" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoDefault" style="width: 7rem;">
                         @endif
         
-                        <h3>{{ $message->user->prenom }}</h3>
+                        <a href="{{route('profile' , $message->user_id)}}"><h3>{{ $message->user->prenom }}</h3></a>
                     </div>
                     <div class= " col-md-8 d-flex flex-row align-items-center">
                         <p class="col-md-4 fw-bold mb-md-3">{{ $message->tags }}</></p>
@@ -192,7 +167,7 @@ FRENDSHIP - Accueil
                         <img  src="images/default_user.jpg" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoDefault" style="width: 7rem;">
                         @endif
         
-                        <h3>{{ $comment->user->prenom }}</h3>
+                        <a href="{{route('profile' , $comment->user)}}"><h3>{{ $comment->user->prenom }}</h3></a>
                     </div>
                     <div class= " col-md-8 d-flex flex-row align-items-center">
                         <p class="col-md-4 fw-bold mb-md-3">{{ $comment->tags }}</></p>

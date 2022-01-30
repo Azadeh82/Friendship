@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+FRENDSHIP - Inscription
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +12,7 @@
                 <div class="card-header">{{ __('Inscription') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -57,7 +61,8 @@
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Photo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus>
+                               
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +78,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
