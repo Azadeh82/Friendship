@@ -9,7 +9,7 @@
     <div class="container text-center">
         <div class="row my-md-3 ">
             <div class="col d-flex justify-content-center ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
                     class="bi bi-emoji-wink text-danger text-opacity-75 mx-md-2" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path
@@ -18,7 +18,7 @@
 
                 <h1 class="text-warning fst-italic fs-1">profile de {{ $user->prenom }} {{$user->nom}}</h1>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
                     class="bi bi-emoji-wink text-danger text-opacity-75 mx-md-2" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path
