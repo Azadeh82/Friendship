@@ -35,7 +35,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <a class="navbar-brand" href="#">
-                        <img src="images/logo.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
+                        <img src="/images/logo.png" alt="logo" width="60" height="60" class="d-inline-block align-text-top">
                     </a>
                     <!-- Left Side Of Navbar -->
 

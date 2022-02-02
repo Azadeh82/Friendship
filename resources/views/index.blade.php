@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-FRENDSHIP - bienvenue
+FRENDSHIP - Connexion
 @endsection
 
 @section('content')
@@ -33,7 +33,7 @@ FRENDSHIP - bienvenue
     <div class="col-md-8">
       <div class="card mb-md-5">
         <div class="card-body shadow-lg bg-body rounded">
-            <h3 class="fw-bold fs-4 mx-auto my-md-5">Merci de connecter à votre compt ou faire inscrire </h3>  
+            <h3 class="fw-bold fs-4 mx-auto my-md-5">Merci de connecter à votre compte ou faire inscrire </h3>  
             <button type="button" class="btn btn-outline-danger text-opacity-50 mx-md-3 mb-md-5"><a href="register">Inscription</a></button>
             <button type="button" class="btn btn-outline-danger text-opacity-50 mx-md-3 mb-md-5"><a href="login">Connexion</a></button>
         </div>

@@ -39,10 +39,10 @@ FRENDSHIP - Créer un commentaire
                   @csrf
 
                   <div class="row mb-3 d-flex flex-column">
-                    <label for="content" class="col-md-10 col-form-label mx-auto">{{ __('Tape ton commentaire') }}</label>
+                    <label for="content" class="col-md-10 col-form-label mx-auto fw-bold fs-6">{{ __('Tape ton commentaire') }}</label>
 
                     <div class="col-md-10 mx-auto">
-                        <textarea class="form-control" id="floatingTextarea " placeholder = "Commentaire" rows="3" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" required autocomplete="content" autofocus></textarea>
+                        <textarea class="form-control" id="floatingTextarea " placeholder = "Comment" rows="3" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" required autocomplete="content" autofocus></textarea>
 
                         @error('content')
                             <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@ FRENDSHIP - Créer un commentaire
                   </div>
 
                   <div class="row mb-3 d-flex flex-column">
-                    <label for="tags" class="col col-form-label">{{ __('Ajoute des tags') }}</label>
+                    <label for="tags" class="col col-form-label fw-bold fs-6">{{ __('Ajoute des tags') }}</label>
 
                       <div class="col-md-8 mx-auto">
                           <input id="tags" type="text" class="form-control @error('tags') is-invalid @enderror" name="tags" value="{{ old('tags') }}" required autocomplete="tags" autofocus placeholder = "Salut">
@@ -66,21 +66,25 @@ FRENDSHIP - Créer un commentaire
                       </div> 
                   </div>
                 
-                  <div class="row mb-3 d-flex flex-column">
-                    <div class="col-md-6 d-flex flex-column justify-content-center">
-                        <label for="image" class="col-form-label">{{ __('Ajoute une image') }}</label>
-                            <div class="col-md-6 mx-auto">
+                  <div class="row my-md-3">
+                    <div class="col d-flex flex-column justify-content-center">
+                        <label for="image" class="col-form-label fw-bold fs-6 text-center">{{ __('Ajoute une image') }}</label>
 
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
+                            <div class="col-md-6 d-flex flex-row mx-auto">
+                                <div class="col-md-10 mx-auto">
 
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
+                                    
+
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>     
                     </div>
-                  </div>
+                </div>
 
                   <input type="hidden" name="messageid" value="{{$id}}">
 

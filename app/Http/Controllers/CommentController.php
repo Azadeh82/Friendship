@@ -39,9 +39,15 @@ class CommentController extends Controller
 
         $this->authorize('create', $comment);
 
+        if (($request['image'])) {
+ 
+            $comment->image = uploadImage($request);
+        
+        }
+
         $comment->content = $request->content;
         $comment->tags = $request->tags;
-        $comment->image = $request->image;
+
 
         $user = Auth::user();
         $comment->user_id = $user->id;
@@ -78,9 +84,14 @@ class CommentController extends Controller
             'content' => 'required|min:3|max:500',
             'tags' => 'required|min:3|max:40',
         ]);
+
+        if (($request['image'])) {
+ 
+            $comment->image = uploadImage($request);
+        
+        }
              
         $comment->content = $request['content'];       
-        $comment->image = $request['image'];
         $comment->tags = $request['tags'];
         $comment->save();
 

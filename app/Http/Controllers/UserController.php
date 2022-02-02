@@ -54,13 +54,19 @@ class UserController extends Controller
         $validated = $request->validate([
             'nom' => 'required|min:3|max:40',
             'prenom' => 'required|min:3|max:40',
-            'image' => 'required|min:3|max:40'
         ]);
 
         $user = Auth::user();
+
+        if (($request['image'])) {
+ 
+            $user->image = uploadImage($request);
+        
+        }
+
+        
         $user->nom = $validated['nom'];
         $user->prenom = $validated['prenom'];
-        $user->image = $validated['image'];
         $user->save();
 
         return redirect()->route('account')->with('message', 'Le compte a bien été modifié');
@@ -116,20 +122,9 @@ class UserController extends Controller
     {
         //$user->load('messages.comments.user');return view('user/profile', compact('user'))
 
-        $messages = Message::where('user_id', '=', $user->id)->with('comments.user')->latest()->get();
+        $messages = Message::where('user_id', '=', $user->id)->with('comments.user')->latest()->paginate(5);
 
         return view('user/profile', compact('user', 'messages'));
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

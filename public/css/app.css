@@ -2,7 +2,6 @@
 body { 
   background-image: url('/images/bgbody2.png');
   background-repeat: repeat;
-
 }
 
 .messageframe {
@@ -21,6 +20,10 @@ body {
   background-image: url('/images/bgcomment.png');
   background-size: cover;
   background-position: center;
+}
+
+#password {
+  font-size: 10px;
 }
 @charset "UTF-8";
 

@@ -78,8 +78,13 @@ class MessageController extends Controller
             'tags' => 'required|min:3|max:40',
         ]);
 
+        if (($request['image'])) {
+ 
+            $message->image = uploadImage($request);
+        
+        }
+
         $message->message = $request['message'];
-        $message->image = $request['image'];
         $message->tags = $request['tags'];
         $message->save();
 

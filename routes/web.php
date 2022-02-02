@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//page connexion 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
+//page connexion 
 Route::get('/index', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
+//page accueil
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Auth::routes();
@@ -39,7 +42,6 @@ Route::get('/comments/create/{id}', [\App\Http\Controllers\CommentController::cl
 
 Route::get('/search', [\App\Http\Controllers\MessageController::class, 'search'])->name('search'); 
 
-Route::post('image-upload', [ \App\Http\Controllers\ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
-
+Route::post('image-upload', [\App\Http\Controllers\UploadImageController::class, 'imageUploadPost'])->name('image.upload.post');
 
 

@@ -17,11 +17,11 @@ FRENDSHIP - Modifier Message
                         @csrf
                         @method('PUT')
                         <div class="row mb-3">
-                            <label for="message" class="col-md-4 col-form-label text-md-end">{{ __('message') }}</label>
+                            <label for="message" class="col-md-4 col-form-label text-md-end">{{ __('Message') }}</label>
 
                             <div class="col-md-6">
                                 
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="image" autofocus placeholder = "Uploaud un image">
+                                <textarea class="form-control" id="floatingTextarea " rows="3" class="form-control @error('message') is-invalid @enderror" name="message" value="{{ $message->message }}" required autocomplete="message" autofocus></textarea>
 
                                 @error('message')
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@ FRENDSHIP - Modifier Message
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $message->image }}" autocomplete="image" autofocus>
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $message->image }}" autocomplete="image" autofocus>
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@ FRENDSHIP - Modifier Message
                         </div>
 
                         <div class="row mb-3">
-                          <label for="tags" class="col-md-4 col-form-label text-md-end">{{ __('tags') }}</label>
+                          <label for="tags" class="col-md-4 col-form-label text-md-end">{{ __('Tags') }}</label>
 
                           <div class="col-md-6">
                               <input id="tags" type="text" class="form-control @error('tags') is-invalid @enderror" name="tags" value="{{ $message->tags }}" required autocomplete="tags" autofocus>

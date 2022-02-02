@@ -107,12 +107,12 @@ FRENDSHIP - Accueil
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card-body rounded bgmessage border border-danger border-3 bg-success">
-                <div class="card d-flex flex-row justify-content-center mt-5 ">
+                <div class="card d-flex flex-row justify-content-center">
                     <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
                         @if ($message->user->image) 
-                        <img src="images/{{$message->user->image}}" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoUser" style="width: 7rem;">
+                        <img src="/images/{{$message->user->image}}" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoUser" style="width: 7rem;">
                         @else 
-                        <img  src="images/default_user.jpg" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoDefault" style="width: 7rem;">
+                        <img  src="/images/default_user.jpg" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoDefault" style="width: 7rem;">
                         @endif
         
                         <a href="{{route('profile' , $message->user_id)}}"><h3>{{ $message->user->prenom }}</h3></a>
@@ -125,7 +125,7 @@ FRENDSHIP - Accueil
 
                 <div class="card">
                     @if ($message->image) 
-                    <img class="col-md-6 card-img-top img-fluid" src="images/{{ $message->image }}" alt="imgpost">
+                    <img class="col-md-6 card-img-top img-fluid" src="/images/{{ $message->image }}" alt="imgpost">
                     @endif
                     <div class="card-body">
                         <h5 class="fw-bold">{{ $message->message }}</h5>
@@ -159,12 +159,12 @@ FRENDSHIP - Accueil
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
             <div class="card-body rounded bgcomment border border-danger border-3 bg-success">
-                <div class="card d-flex flex-row justify-content-center mt-5 ">
+                <div class="card d-flex flex-row justify-content-center">
                     <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
                         @if ($comment->user->image)  
-                        <img src="images/{{$comment->user->image}}" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoUser" style="width: 7rem;">
+                        <img src="/images/{{$comment->user->image}}" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoUser" style="width: 7rem;">
                         @else 
-                        <img  src="images/default_user.jpg" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoDefault" style="width: 7rem;">
+                        <img  src="/images/default_user.jpg" class="card-img-top rounded-circle img-fluid m-md-3" alt="photoDefault" style="width: 7rem;">
                         @endif
         
                         <a href="{{route('profile' , $comment->user)}}"><h3>{{ $comment->user->prenom }}</h3></a>
@@ -177,7 +177,7 @@ FRENDSHIP - Accueil
 
                 <div class="card">
                     @if ($comment->image) 
-                    <img class="col-md-6 card-img-top img-fluid" src="images/{{ $comment->image }}" alt="imgcomment">
+                    <img class="col-md-6 card-img-top img-fluid" src="/images/{{ $comment->image }}" alt="imgcomment">
                     @endif
                     <div class="card-body">
                         <h5 class="fw-bold">{{ $comment->content }}</h5>
